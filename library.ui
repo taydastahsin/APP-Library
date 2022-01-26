@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>250</width>
+    <height>350</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>251</width>
+      <height>331</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>4</number>
+    </property>
+    <widget class="QWidget" name="page"/>
+    <widget class="QWidget" name="page_2"/>
+    <widget class="QWidget" name="page_3"/>
+    <widget class="QWidget" name="page_4"/>
+    <widget class="QWidget" name="page_5"/>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>250</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuGiri">
+    <property name="title">
+     <string>Seçenekler</string>
+    </property>
+    <addaction name="actionKitap_Ekle"/>
+    <addaction name="actionSorumlu_Ekle"/>
+    <addaction name="actionKitap_Ver"/>
+    <addaction name="actionKitap_Al"/>
+   </widget>
+   <addaction name="menuGiri"/>
+  </widget>
+  <action name="actionLogin">
+   <property name="text">
+    <string>Giriş</string>
+   </property>
+  </action>
+  <action name="actionKitap_Ekle">
+   <property name="text">
+    <string>Kitap Ekle</string>
+   </property>
+  </action>
+  <action name="actionSorumlu_Ekle">
+   <property name="text">
+    <string>Sorumlu Ekle</string>
+   </property>
+  </action>
+  <action name="actionKitap_Ver">
+   <property name="text">
+    <string>Kitap Ver</string>
+   </property>
+  </action>
+  <action name="actionKitap_Al">
+   <property name="text">
+    <string>Kitap Al</string>
+   </property>
+  </action>
+  <action name="actionHakk_nda">
+   <property name="text">
+    <string>Hakkında</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
