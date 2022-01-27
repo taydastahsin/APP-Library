@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>250</width>
+    <width>247</width>
     <height>350</height>
    </rect>
   </property>
@@ -24,9 +24,96 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
-    <widget class="QWidget" name="page"/>
+    <widget class="QWidget" name="page">
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>40</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Giriş Paneli</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>231</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Kullanıcı Ad:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineEdit"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Şifre :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="lineEdit_2"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>240</y>
+        <width>151</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Giriş</string>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="page_2"/>
     <widget class="QWidget" name="page_3"/>
     <widget class="QWidget" name="page_4"/>
@@ -38,7 +125,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>250</width>
+     <width>247</width>
      <height>21</height>
     </rect>
    </property>
@@ -53,11 +140,6 @@
    </widget>
    <addaction name="menuGiri"/>
   </widget>
-  <action name="actionLogin">
-   <property name="text">
-    <string>Giriş</string>
-   </property>
-  </action>
   <action name="actionKitap_Ekle">
    <property name="text">
     <string>Kitap Ekle</string>
@@ -76,11 +158,6 @@
   <action name="actionKitap_Al">
    <property name="text">
     <string>Kitap Al</string>
-   </property>
-  </action>
-  <action name="actionHakk_nda">
-   <property name="text">
-    <string>Hakkında</string>
    </property>
   </action>
  </widget>
