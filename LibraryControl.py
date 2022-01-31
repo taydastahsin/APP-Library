@@ -7,11 +7,11 @@ class librarycontrol(QMainWindow):
         self.ui=Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.home_index=5
-        self.book_add_index=4
-        self.sorumlu_add_index=3
-        self.book_get_index=2
-        self.book_take_index=1
+        self.home_index=0
+        self.book_add_index=1
+        self.sorumlu_add_index=2
+        self.book_get_index=3
+        self.book_take_index=4
 
 
         self.ui.actionKitap_Ekle.triggered.connect(self.book_add)
@@ -47,6 +47,12 @@ class librarycontrol(QMainWindow):
             self.ui.actionKitap_Ekle.setEnabled(True)
             self.ui.actionKitap_Al.setEnabled(True)
             self.ui.actionKitap_Ver.setEnabled(True)
+            self.book_get()
+        else :
+            self.ui.lineEdit.clear()
+            self.ui.lineEdit_2.clear()
+            QMessageBox.warning(self, "Hatalı Giriş", "Lütfen Tekrar Deneyiniz!!!!!!")
+
 
 
 
