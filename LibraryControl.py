@@ -32,6 +32,7 @@ class librarycontrol(QMainWindow):
 
     def book_add (self):
         self.ui.stackedWidget.setCurrentIndex(self.book_add_index)
+        self.ui.pushButton_2.clicked.connect(self.book_add_save)
     def book_add_save(self):
         a= self.ui.lineEdit_3.text()
         b=self.ui.lineEdit_5.text()
@@ -48,22 +49,36 @@ class librarycontrol(QMainWindow):
 
     def book_get (self):
         self.ui.stackedWidget.setCurrentIndex(self.book_get_index)
+        self.ui.pushButton_4.clicked.connect(self.book_get_save)
     def book_get_save(self):
         a = self.ui.lineEdit_6.text()
         b= self.ui.lineEdit_7.text()
         c= self.ui.lineEdit_8.text()
         d= self.ui.lineEdit_9.text()
 
-        dict = {"book_no": a,"book_name":b,
+        data = {"book_no": a,"book_name":b,
                 "student_name":c,"student_no":d
 
                 }
 
-        with open('book_get.json', 'w') as json_file:
-            json.dump(dict, json_file)
+        data = {data[i]: data[i + 1] for i in range(0, len(data), 2)}
+
+        with open("book_get.json", "w") as j:
+            json.dump(data, j)
+
+
+
+
+
+
+        self.ui.lineEdit_6.clear()
+        self.ui.lineEdit_7.clear()
+        self.ui.lineEdit_8.clear()
+        self.ui.lineEdit_9.clear()
 
     def book_take (self):
         self.ui.stackedWidget.setCurrentIndex(self.book_take_index)
+        self.ui.pushButton_5.clicked.connect(self.book_take_Save)
     def book_take_save(self):
         a = self.ui.lineEdit_13.text()
         b = self.ui.lineEdit_11.text()
