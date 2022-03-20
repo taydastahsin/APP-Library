@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="login">
+    <file>login.jpg</file>
+  </qresource>
+  <qresource prefix="kitap">
+    <file>Kitap.jpg</file>
+  </qresource>
+  <qresource prefix="arka">
+    <file>arka.jpg</file>
+  </qresource>
+  <qresource prefix="pin">
+    <file>pin.jpg</file>
+  </qresource>
+</RCC>
