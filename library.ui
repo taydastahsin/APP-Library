@@ -125,7 +125,7 @@
 </string>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QWidget" name="verticalLayoutWidget">
@@ -355,8 +355,8 @@
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_10">
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_12">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -365,7 +365,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Öğrenci Ad :</string>
+          <string>Öğrenci Soyad :</string>
          </property>
         </widget>
        </item>
@@ -383,8 +383,8 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_12">
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_10">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -393,21 +393,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Öğrenci Soyad :</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_13">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Kitap No :</string>
+          <string>Öğrenci Ad :</string>
          </property>
         </widget>
        </item>
@@ -425,6 +411,20 @@
          </property>
         </widget>
        </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_13">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Kitap No :</string>
+         </property>
+        </widget>
+       </item>
        <item row="5" column="0">
         <widget class="QLabel" name="label_15">
          <property name="font">
@@ -439,23 +439,57 @@
          </property>
         </widget>
        </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="lineEdit_12"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="lineEdit_11"/>
+       </item>
        <item row="0" column="1">
         <widget class="QLineEdit" name="lineEdit_9"/>
        </item>
        <item row="1" column="1">
         <widget class="QLineEdit" name="lineEdit_10"/>
        </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="lineEdit_11"/>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="lineEdit_12"/>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="lineEdit_14"/>
        </item>
        <item row="4" column="1">
         <widget class="QLineEdit" name="lineEdit_13"/>
        </item>
-       <item row="5" column="1">
-        <widget class="QLineEdit" name="lineEdit_14"/>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_23">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Verilen Tarih :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QDateEdit" name="dateEdit">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -484,14 +518,28 @@
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="lineEdit_16"/>
+       </item>
        <item row="3" column="1">
         <widget class="QLineEdit" name="lineEdit_18"/>
        </item>
        <item row="4" column="1">
         <widget class="QLineEdit" name="lineEdit_19"/>
        </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_16"/>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_20">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Kitap Adı :</string>
+         </property>
+        </widget>
        </item>
        <item row="2" column="1">
         <widget class="QLineEdit" name="lineEdit_17"/>
@@ -510,23 +558,6 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_20">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Kitap Adı :</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="lineEdit_15"/>
-       </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_16">
          <property name="font">
@@ -540,6 +571,23 @@
           <string>Öğrenci Ad :</string>
          </property>
         </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_18">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Öğrenci Soyad :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineEdit_15"/>
        </item>
        <item row="4" column="0">
         <widget class="QLabel" name="label_17">
@@ -555,8 +603,8 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_18">
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_24">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -565,7 +613,18 @@
           </font>
          </property>
          <property name="text">
-          <string>Öğrenci Soyad :</string>
+          <string>İade Tarihi :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QDateEdit" name="dateEdit_2">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
          </property>
         </widget>
        </item>
@@ -756,7 +815,7 @@
   </widget>
  </widget>
  <resources>
-  <include location="image.qrc"/>
+  <include location="icons.qrc"/>
  </resources>
  <connections/>
 </ui>
