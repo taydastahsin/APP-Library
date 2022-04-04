@@ -118,14 +118,10 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"># stackedWidget { 
-	border-image: url(:/login/login.jpg);
-}
-
-</string>
+     <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QWidget" name="verticalLayoutWidget">
@@ -658,6 +654,46 @@
        <string>Göster</string>
       </property>
      </widget>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>10</y>
+        <width>711</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>Kitap Ad</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Kitap Ad</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Öğrenci Ad</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Öğrenci Soyad</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Öğrenci</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Verilen Tarih</string>
+       </property>
+      </column>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_6">
      <widget class="QPushButton" name="pushButton_13">
@@ -727,6 +763,9 @@
         <width>231</width>
         <height>181</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>Resim</string>
