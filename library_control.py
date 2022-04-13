@@ -16,7 +16,7 @@ class library_admin (QMainWindow) :
         self.book_take_index=3
         self.book_look_index=4
         self.book_find_index=5
-        self.app_pin_trans_index=6
+
 
 
         self.ui.pushButton.clicked.connect(self.home)
@@ -25,7 +25,7 @@ class library_admin (QMainWindow) :
         self.ui.pushButton_3.clicked.connect(self.book_take)
         self.ui.pushButton_4.clicked.connect(self.book_look)
         self.ui.pushButton_5.clicked.connect(self.book_find)
-        self.ui.pushButton_6.clicked.connect(self.app_pin_trans)
+
 
         self.ui.pushButton_8.clicked.connect(self.login)
         self.ui.pushButton_9.clicked.connect(self.book_add_save)
@@ -33,7 +33,7 @@ class library_admin (QMainWindow) :
         self.ui.pushButton_11.clicked.connect(self.book_take_save)
         self.ui.pushButton_12.clicked.connect(self.book_look_button)
         self.ui.pushButton_13.clicked.connect(self.book_find_button)
-        self.ui.pushButton_15.clicked.connect(self.app_pin_trans_button)
+
 
         self.ui.pushButton.setEnabled(False)
         self.ui.pushButton_2.setEnabled(False)
@@ -41,7 +41,7 @@ class library_admin (QMainWindow) :
         self.ui.pushButton_3.setEnabled(False)
         self.ui.pushButton_4.setEnabled(False)
         self.ui.pushButton_5.setEnabled(False)
-        self.ui.pushButton_6.setEnabled(False)
+
 
         self.home()
 
@@ -55,7 +55,6 @@ class library_admin (QMainWindow) :
         self.ui.pushButton_3.setEnabled(False)
         self.ui.pushButton_4.setEnabled(False)
         self.ui.pushButton_5.setEnabled(False)
-        self.ui.pushButton_6.setEnabled(False)
     def book_add(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_add_index)
     def book_get(self):
@@ -66,8 +65,6 @@ class library_admin (QMainWindow) :
         self.ui.stackedWidget.setCurrentIndex(self.book_look_index)
     def book_find(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_find_index)
-    def app_pin_trans(self):
-        self.ui.stackedWidget.setCurrentIndex(self.app_pin_trans_index)
 
 
     def login(self):
@@ -75,7 +72,7 @@ class library_admin (QMainWindow) :
         islem = baglanti.cursor()
         baglanti.commit()
 
-        table = islem.execute(
+        islem.execute(
             "create table if not exists login(adminName text,adminPin int)")
         baglanti.commit()
 
@@ -93,8 +90,6 @@ class library_admin (QMainWindow) :
             self.ui.pushButton_3.setEnabled(True)
             self.ui.pushButton_4.setEnabled(True)
             self.ui.pushButton_5.setEnabled(True)
-            self.ui.pushButton_6.setEnabled(True)
-
             self.book_get()
 
             self.ui.lineEdit.clear()
@@ -146,7 +141,7 @@ class library_admin (QMainWindow) :
         islem = baglanti.cursor()
         baglanti.commit()
 
-        table = islem.execute(
+        islem.execute(
             "create table if not exists bookget(bookName text,bookNo int,studentName text,studentSurname text,studentNo int,telNo int)")
         baglanti.commit()
 
@@ -172,8 +167,19 @@ class library_admin (QMainWindow) :
 
 
     def book_take_save(self):
-        #Silme işlemi yapılcak
-        pass
+        db = sqlite3.connect("DbLibrary.db")
+        cursor = db.cursor()
+
+        silincek_veri=self.ui.lineEdit_15.text()
+        silincek_veri_1=int (self.ui.lineEdit_16.text())
+
+        command ="delete from bookget where bookName = ? or bookNo = ?"
+        try:
+            cursor.execute(command,(silincek_veri,silincek_veri_1))
+            db.commit()
+        except:
+            QMessageBox.warning(self, "Hata Mesajı", "Lütfen Verileri Düzgün giriniz!!!!! .")
+
 
     def book_look_button(self):
         db = sqlite3.connect("DbLibrary.db")
@@ -190,13 +196,20 @@ class library_admin (QMainWindow) :
             for column_number,data in enumerate(row_data):
                 self.ui.tableWidget.setItem(row_number,column_number,QTableWidgetItem(str(data)))
 
-    def book_find_button(self):
-        #Bulma yapılcak
-        pass
+    def book_find_button(self):#Bozuk Düzelecek
+        db = sqlite3.connect("DbLibrary.db")
+        cursor = db.cursor()
+        find = self.ui.lineEdit_24.text()
 
-    def app_pin_trans_button(self):
-        #Update yapılcak
-        pass
+
+        command="SELECT * FROM bookadd WHERE bookName = ?  "
+        cursor.execute(command,(find,))
+
+        for indexsatir,kayitnumarasi in enumerate(cursor):
+            for indexsutun,kayitsutun in enumerate(kayitnumarasi):
+                self.ui.tableWidget_2.setItem(indexsatir,indexsutun,QTableWidgetItem(str(kayitsutun)))
+
+
 
 
 
