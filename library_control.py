@@ -66,7 +66,7 @@ class library_admin (QMainWindow) :
     def book_find(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_find_index)
 
-
+    # Not: Giriş id ve şifreyi veri tabanına bağlancak
     def login(self):
         baglanti = sqlite3.connect("DbLibrary.db")
         islem = baglanti.cursor()
@@ -101,10 +101,7 @@ class library_admin (QMainWindow) :
             self.ui.lineEdit.clear()
             self.ui.lineEdit_2.clear()
 
-
-
-
-
+    # Not: Otomatik zaman eklenecek
     def book_add_save(self):
         baglanti = sqlite3.connect("DbLibrary.db")
         islem = baglanti.cursor()
@@ -119,24 +116,25 @@ class library_admin (QMainWindow) :
         c = self.ui.lineEdit_5.text()
         d = self.ui.lineEdit_6.text()
         e = self.ui.lineEdit_7.text()
-        f = int (self.ui.lineEdit_8.text())
+        f = int(self.ui.lineEdit_8.text())
 
         try:
-            ekle= "insert into bookadd (bookName,bookNo,bookWriter,bookHome,bookTranstle,bookPage) values (?,?,?,?,?,?)"
-            islem.execute(ekle,(a,b,c,d,e,f))
+            ekle = "insert into bookadd (bookName,bookNo,bookWriter,bookHome,bookTranstle,bookPage) values (?,?,?,?,?,?)"
+            islem.execute(ekle, (a, b, c, d, e, f))
             baglanti.commit()
-        except :
+
+            self.ui.lineEdit_3.clear()
+            self.ui.lineEdit_4.clear()
+            self.ui.lineEdit_5.clear()
+            self.ui.lineEdit_6.clear()
+            self.ui.lineEdit_7.clear()
+            self.ui.lineEdit_8.clear()
+
+        except:
             QMessageBox.warning(self, "Hata Mesajı", "Veri Kaydı Yapılamadı .")
 
-
-
-
-
-
-
-
+    # Not: Otomatik zaman eklenecek
     def book_get_save(self):
-        # Not: Otomatik zaman eklenecek
         baglanti = sqlite3.connect("DbLibrary.db")
         islem = baglanti.cursor()
         baglanti.commit()
@@ -157,21 +155,24 @@ class library_admin (QMainWindow) :
             ekle= "insert into bookget (bookName,bookNo,studentName,studentSurname,studentNo,telNo) values (?,?,?,?,?,?)"
             islem.execute(ekle,(a,b,c,d,e,f))
             baglanti.commit()
+
+            self.ui.lineEdit_9.clear()
+            self.ui.lineEdit_10.clear()
+            self.ui.lineEdit_11.clear()
+            self.ui.lineEdit_12.clear()
+            self.ui.lineEdit_13.clear()
+            self.ui.lineEdit_14.clear()
+
         except :
             QMessageBox.warning(self, "Hata Mesajı", "Veri Kaydı Yapılamadı .")
 
-
-
-
-
-
-
+    # Tamamlandı.
     def book_take_save(self):
         db = sqlite3.connect("DbLibrary.db")
         cursor = db.cursor()
 
         silincek_veri=self.ui.lineEdit_15.text()
-        silincek_veri_1=int (self.ui.lineEdit_16.text())
+        silincek_veri_1=self.ui.lineEdit_16.text()
 
         command ="delete from bookget where bookName = ? or bookNo = ?"
         try:
@@ -180,7 +181,7 @@ class library_admin (QMainWindow) :
         except:
             QMessageBox.warning(self, "Hata Mesajı", "Lütfen Verileri Düzgün giriniz!!!!! .")
 
-
+    # Tamamlandı.
     def book_look_button(self):
         db = sqlite3.connect("DbLibrary.db")
         cursor = db.cursor()
@@ -196,7 +197,7 @@ class library_admin (QMainWindow) :
             for column_number,data in enumerate(row_data):
                 self.ui.tableWidget.setItem(row_number,column_number,QTableWidgetItem(str(data)))
 
-    def book_find_button(self):#Bozuk Düzelecek
+    def book_find_button(self):#Bozuk Düzelecek "like" metodunu kullan
         db = sqlite3.connect("DbLibrary.db")
         cursor = db.cursor()
         find = self.ui.lineEdit_24.text()
