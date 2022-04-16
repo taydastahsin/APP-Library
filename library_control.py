@@ -197,18 +197,28 @@ class library_admin (QMainWindow) :
             for column_number,data in enumerate(row_data):
                 self.ui.tableWidget.setItem(row_number,column_number,QTableWidgetItem(str(data)))
 
-    def book_find_button(self):#Bozuk Düzelecek "like" metodunu kullan
+    def book_find_button(self):#Bozuk Düzenlecek "like" metodunu kullan
         db = sqlite3.connect("DbLibrary.db")
         cursor = db.cursor()
-        find = self.ui.lineEdit_24.text()
+        find=str(self.ui.lineEdit_24.text())
+
+        command = "SELECT * FROM bookadd WHERE bookName LIKE '%s' LIMIT 100;"%("%"+find+"%")
+
+        try:
+            data = cursor.execute(command)
+            result =data.fetchall()
+
+            self.ui.tableWidget_2.setRowCount(0)
+
+            for row_number, row_data in enumerate(result):
+                self.ui.tableWidget_2.insertRow(row_number)
+                for column_number, data in enumerate(row_data):
+                    self.ui.tableWidget_2.setItem(row_number, column_number, QTableWidgetItem(str(data)))
+
+        except:
+            QMessageBox.warning(self, "Hata Mesajı", "Veri Bulma İşlemi Yapılamadı .")
 
 
-        command="SELECT * FROM bookadd WHERE bookName = ?  "
-        cursor.execute(command,(find,))
-
-        for indexsatir,kayitnumarasi in enumerate(cursor):
-            for indexsutun,kayitsutun in enumerate(kayitnumarasi):
-                self.ui.tableWidget_2.setItem(indexsatir,indexsutun,QTableWidgetItem(str(kayitsutun)))
 
 
 
