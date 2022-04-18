@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import *
 from library import Ui_MainWindow
 import sqlite3
-from PyQt5.QtSql import *
+import datetime
 
 class library_admin (QMainWindow) :
 
@@ -101,7 +101,7 @@ class library_admin (QMainWindow) :
             self.ui.lineEdit.clear()
             self.ui.lineEdit_2.clear()
 
-    # Not: Otomatik zaman eklenecek
+    # Tamamlandı.
     def book_add_save(self):
         baglanti = sqlite3.connect("DbLibrary.db")
         islem = baglanti.cursor()
@@ -133,14 +133,14 @@ class library_admin (QMainWindow) :
         except:
             QMessageBox.warning(self, "Hata Mesajı", "Veri Kaydı Yapılamadı .")
 
-    # Not: Otomatik zaman eklenecek
+    # Tamamlandı.
     def book_get_save(self):
         baglanti = sqlite3.connect("DbLibrary.db")
         islem = baglanti.cursor()
         baglanti.commit()
 
         islem.execute(
-            "create table if not exists bookget(bookName text,bookNo int,studentName text,studentSurname text,studentNo int,telNo int)")
+            "create table if not exists bookget(bookName text,bookNo int,studentName text,studentSurname text,studentNo int,telNo int,dateNow text)")
         baglanti.commit()
 
         a = self.ui.lineEdit_9.text()
@@ -149,11 +149,12 @@ class library_admin (QMainWindow) :
         d = self.ui.lineEdit_12.text()
         e = int(self.ui.lineEdit_13.text())
         f = int(self.ui.lineEdit_14.text())
+        g=datetime.datetime.now()
 
 
         try:
-            ekle= "insert into bookget (bookName,bookNo,studentName,studentSurname,studentNo,telNo) values (?,?,?,?,?,?)"
-            islem.execute(ekle,(a,b,c,d,e,f))
+            ekle= "insert into bookget (bookName,bookNo,studentName,studentSurname,studentNo,telNo,dateNow) values (?,?,?,?,?,?,?)"
+            islem.execute(ekle,(a,b,c,d,e,f,g))
             baglanti.commit()
 
             self.ui.lineEdit_9.clear()
@@ -197,7 +198,8 @@ class library_admin (QMainWindow) :
             for column_number,data in enumerate(row_data):
                 self.ui.tableWidget.setItem(row_number,column_number,QTableWidgetItem(str(data)))
 
-    def book_find_button(self):#Bozuk Düzenlecek "like" metodunu kullan
+    # Tamamlandı.
+    def book_find_button(self):
         db = sqlite3.connect("DbLibrary.db")
         cursor = db.cursor()
         find=str(self.ui.lineEdit_24.text())
