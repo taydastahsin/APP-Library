@@ -2,6 +2,8 @@ from PyQt5.QtWidgets import *
 from library import Ui_MainWindow
 import sqlite3
 import datetime
+from PyQt5.QtGui import QIntValidator
+
 
 class library_admin (QMainWindow) :
 
@@ -16,6 +18,7 @@ class library_admin (QMainWindow) :
         self.book_take_index=3
         self.book_look_index=4
         self.book_find_index=5
+        self.book_change_password_index=6
 
 
 
@@ -25,6 +28,7 @@ class library_admin (QMainWindow) :
         self.ui.pushButton_3.clicked.connect(self.book_take)
         self.ui.pushButton_4.clicked.connect(self.book_look)
         self.ui.pushButton_5.clicked.connect(self.book_find)
+        self.ui.pushButton_6.clicked.connect(self.book_change_password)
 
 
         self.ui.pushButton_8.clicked.connect(self.login)
@@ -33,6 +37,8 @@ class library_admin (QMainWindow) :
         self.ui.pushButton_11.clicked.connect(self.book_take_save)
         self.ui.pushButton_12.clicked.connect(self.book_look_button)
         self.ui.pushButton_13.clicked.connect(self.book_find_button)
+        self.ui.pushButton_14.clicked.connect(self.book_change_password_button)
+
 
 
         self.ui.pushButton.setEnabled(False)
@@ -41,6 +47,7 @@ class library_admin (QMainWindow) :
         self.ui.pushButton_3.setEnabled(False)
         self.ui.pushButton_4.setEnabled(False)
         self.ui.pushButton_5.setEnabled(False)
+        self.ui.pushButton_6.setEnabled(False)
 
 
         self.home()
@@ -55,6 +62,7 @@ class library_admin (QMainWindow) :
         self.ui.pushButton_3.setEnabled(False)
         self.ui.pushButton_4.setEnabled(False)
         self.ui.pushButton_5.setEnabled(False)
+        self.ui.pushButton_6.setEnabled(False)
     def book_add(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_add_index)
     def book_get(self):
@@ -65,41 +73,41 @@ class library_admin (QMainWindow) :
         self.ui.stackedWidget.setCurrentIndex(self.book_look_index)
     def book_find(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_find_index)
+    def book_change_password(self):
+        self.ui.stackedWidget.setCurrentIndex(self.book_change_password_index)
 
-    # Not: Giriş id ve şifreyi veri tabanına bağlancak
+    # Tamamlandı.
     def login(self):
-        baglanti = sqlite3.connect("DbLibrary.db")
-        islem = baglanti.cursor()
-        baglanti.commit()
+        id = self.ui.lineEdit.text()
+        pw = self.ui.lineEdit_2.text()
 
-        islem.execute(
-            "create table if not exists login(adminName text,adminPin int)")
-        baglanti.commit()
+        db = sqlite3.connect("DbLibrary.db")
+        db.execute('create table if not exists login(username text,password text)')
+        db.execute("insert into login(username,password) values('admin','1234')")
+        cursor=db.cursor()
+        cursor.execute("select * from login where username=? and password=?",(id,pw))
+        row=cursor.fetchone()
+        if row:
 
-        a=self.ui.lineEdit.text()
-        b=int(self.ui.lineEdit_2.text())
-        # insert yerine update kullan // Giriş id ve şifreyi veritabanına eşitleyip koşullandır.
-        #ekle = "insert into login (adminName,adminPin) values (?,?)"
-        #islem.execute(ekle, (a, b))
-        #baglanti.commit()
-
-        if a == "admin" and b == 1234:
             self.ui.pushButton.setEnabled(True)
             self.ui.pushButton_2.setEnabled(True)
             self.ui.pushButton_7.setEnabled(True)
             self.ui.pushButton_3.setEnabled(True)
             self.ui.pushButton_4.setEnabled(True)
             self.ui.pushButton_5.setEnabled(True)
+            self.ui.pushButton_6.setEnabled(True)
+
             self.book_get()
 
             self.ui.lineEdit.clear()
             self.ui.lineEdit_2.clear()
-
         else:
             QMessageBox.critical(self, "Hatalı Giriş", "Lütfen id ve şifrenizi doğru giriniz.")
 
             self.ui.lineEdit.clear()
             self.ui.lineEdit_2.clear()
+
+
 
     # Tamamlandı.
     def book_add_save(self):
@@ -219,6 +227,9 @@ class library_admin (QMainWindow) :
 
         except:
             QMessageBox.warning(self, "Hata Mesajı", "Veri Bulma İşlemi Yapılamadı .")
+
+    def book_change_password_button(self):
+        pass
 
 
 
