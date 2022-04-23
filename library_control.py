@@ -56,6 +56,14 @@ class library_admin (QMainWindow) :
     def home(self):
         self.ui.stackedWidget.setCurrentIndex(self.home_index)
 
+        self.ui.pushButton.setStyleSheet("color:rgba(255,0,0)")
+        self.ui.pushButton_2.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_7.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_3.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_4.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_5.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_6.setStyleSheet("color:rgba(0,0,0)")
+
         self.ui.pushButton.setEnabled(False)
         self.ui.pushButton_2.setEnabled(False)
         self.ui.pushButton_7.setEnabled(False)
@@ -63,27 +71,82 @@ class library_admin (QMainWindow) :
         self.ui.pushButton_4.setEnabled(False)
         self.ui.pushButton_5.setEnabled(False)
         self.ui.pushButton_6.setEnabled(False)
+
     def book_add(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_add_index)
+
+        self.ui.pushButton.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_2.setStyleSheet("color:rgba(255,0,0)")
+        self.ui.pushButton_7.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_3.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_4.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_5.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_6.setStyleSheet("color:rgba(0,0,0)")
+
     def book_get(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_get_index)
+
+        self.ui.pushButton.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_2.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_7.setStyleSheet("color:rgba(255,0,0)")
+        self.ui.pushButton_3.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_4.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_5.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_6.setStyleSheet("color:rgba(0,0,0)")
+
     def book_take(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_take_index)
+
+        self.ui.pushButton.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_2.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_7.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_3.setStyleSheet("color:rgba(255,0,0)")
+        self.ui.pushButton_4.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_5.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_6.setStyleSheet("color:rgba(0,0,0)")
+
     def book_look(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_look_index)
+
+        self.ui.pushButton.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_2.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_7.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_3.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_4.setStyleSheet("color:rgba(255,0,0)")
+        self.ui.pushButton_5.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_6.setStyleSheet("color:rgba(0,0,0)")
+
     def book_find(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_find_index)
+
+        self.ui.pushButton.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_2.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_7.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_3.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_4.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_5.setStyleSheet("color:rgba(255,0,0)")
+        self.ui.pushButton_6.setStyleSheet("color:rgba(0,0,0)")
+
     def book_change_password(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_change_password_index)
+
+        self.ui.pushButton.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_2.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_7.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_3.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_4.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_5.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton_6.setStyleSheet("color:rgba(255,0,0)")
 
     # Tamamlandı.
     def login(self):
         id = self.ui.lineEdit.text()
         pw = self.ui.lineEdit_2.text()
 
+
         db = sqlite3.connect("DbLibrary.db")
         db.execute('create table if not exists login(username text,password text)')
-        db.execute("insert into login(username,password) values('admin','1234')")
+        db.execute("insert into login(username,password) values('','')")
         cursor=db.cursor()
         cursor.execute("select * from login where username=? and password=?",(id,pw))
         row=cursor.fetchone()
@@ -228,8 +291,32 @@ class library_admin (QMainWindow) :
         except:
             QMessageBox.warning(self, "Hata Mesajı", "Veri Bulma İşlemi Yapılamadı .")
 
+    # Tamamlandı.
     def book_change_password_button(self):
-        pass
+        db = sqlite3.connect("DbLibrary.db")
+        cursor = db.cursor()
+
+        usernew =self.ui.lineEdit_25.text()
+        pwnew = self.ui.lineEdit_26.text()
+        id =1
+        try:
+            if usernew =="" or pwnew=="":
+                QMessageBox.critical(self, "Hata Mesajı", "Lütfen kullanıcı adını ve şifreyi giriniz!!!!!!")
+            else:
+                cursor.execute("update login set username = ?,password = ? where id = ? ",(usernew,pwnew,id))
+                db.commit()
+                QMessageBox.critical(self, "Başarılı Değiştirme", "Şifreniz Değiştirilmiştir.")
+
+                self.home()
+
+                self.ui.lineEdit_25.clear()
+                self.ui.lineEdit_26.clear()
+
+        except:
+            QMessageBox.critical(self, "Hata Mesajı", "Lütfen düzgün yazınız!!!!!!")
+
+            self.ui.lineEdit_25.clear()
+            self.ui.lineEdit_26.clear()
 
 
 
