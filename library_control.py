@@ -2,7 +2,9 @@ from PyQt5.QtWidgets import *
 from library import Ui_MainWindow
 import sqlite3
 import datetime
-from PyQt5.QtGui import QIntValidator
+from PyQt5.QtGui import QIntValidator,QIcon
+
+
 
 
 class library_admin (QMainWindow) :
@@ -53,16 +55,23 @@ class library_admin (QMainWindow) :
         self.home()
 
 
+
+
+
+
+
+
+
     def home(self):
         self.ui.stackedWidget.setCurrentIndex(self.home_index)
 
-        self.ui.pushButton.setStyleSheet("color:rgba(255,0,0)")
-        self.ui.pushButton_2.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_7.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_3.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_4.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_5.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_6.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton.setStyleSheet("background-color: rgb(255, 255, 255);color: rgb(255, 0, 0);")
+        self.ui.pushButton_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_7.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_3.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_4.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_5.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_6.setStyleSheet("background-color: rgb(255, 255, 255);")
 
         self.ui.pushButton.setEnabled(False)
         self.ui.pushButton_2.setEnabled(False)
@@ -75,78 +84,80 @@ class library_admin (QMainWindow) :
     def book_add(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_add_index)
 
-        self.ui.pushButton.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_2.setStyleSheet("color:rgba(255,0,0)")
-        self.ui.pushButton_7.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_3.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_4.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_5.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_6.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_2.setStyleSheet("background-color: rgb(255, 255, 255);color: rgb(255, 0, 0);")
+        self.ui.pushButton_7.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_3.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_4.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_5.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_6.setStyleSheet("background-color: rgb(255, 255, 255);")
 
     def book_get(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_get_index)
 
-        self.ui.pushButton.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_2.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_7.setStyleSheet("color:rgba(255,0,0)")
-        self.ui.pushButton_3.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_4.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_5.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_6.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_7.setStyleSheet("background-color: rgb(255, 255, 255);color: rgb(255, 0, 0);")
+        self.ui.pushButton_3.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_4.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_5.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_6.setStyleSheet("background-color: rgb(255, 255, 255);")
 
     def book_take(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_take_index)
 
-        self.ui.pushButton.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_2.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_7.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_3.setStyleSheet("color:rgba(255,0,0)")
-        self.ui.pushButton_4.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_5.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_6.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_7.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_3.setStyleSheet("background-color: rgb(255, 255, 255);color: rgb(255, 0, 0);")
+        self.ui.pushButton_4.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_5.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_6.setStyleSheet("background-color: rgb(255, 255, 255);")
 
     def book_look(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_look_index)
 
-        self.ui.pushButton.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_2.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_7.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_3.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_4.setStyleSheet("color:rgba(255,0,0)")
-        self.ui.pushButton_5.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_6.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_7.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_3.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_4.setStyleSheet("background-color: rgb(255, 255, 255);color: rgb(255, 0, 0);")
+        self.ui.pushButton_5.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_6.setStyleSheet("background-color: rgb(255, 255, 255);")
 
     def book_find(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_find_index)
 
-        self.ui.pushButton.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_2.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_7.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_3.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_4.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_5.setStyleSheet("color:rgba(255,0,0)")
-        self.ui.pushButton_6.setStyleSheet("color:rgba(0,0,0)")
+        self.ui.pushButton.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_7.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_3.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_4.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_5.setStyleSheet("background-color: rgb(255, 255, 255);color: rgb(255, 0, 0);")
+        self.ui.pushButton_6.setStyleSheet("background-color: rgb(255, 255, 255);")
 
     def book_change_password(self):
         self.ui.stackedWidget.setCurrentIndex(self.book_change_password_index)
 
-        self.ui.pushButton.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_2.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_7.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_3.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_4.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_5.setStyleSheet("color:rgba(0,0,0)")
-        self.ui.pushButton_6.setStyleSheet("color:rgba(255,0,0)")
+        self.ui.pushButton.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_7.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_3.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_4.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_5.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ui.pushButton_6.setStyleSheet("background-color: rgb(255, 255, 255);color: rgb(255, 0, 0);")
+
+
+
 
     # Tamamlandı.
     def login(self):
         id = self.ui.lineEdit.text()
         pw = self.ui.lineEdit_2.text()
 
-
         db = sqlite3.connect("DbLibrary.db")
-        db.execute('create table if not exists login(username text,password text)')
-        db.execute("insert into login(username,password) values('','')")
+        db.execute('create table if not exists login(username text,password text,id int)')
+        db.execute("insert into login(username,password,id) values('astra','astra.1352',1)")
         cursor=db.cursor()
         cursor.execute("select * from login where username=? and password=?",(id,pw))
         row=cursor.fetchone()
@@ -174,24 +185,26 @@ class library_admin (QMainWindow) :
 
     # Tamamlandı.
     def book_add_save(self):
-        baglanti = sqlite3.connect("DbLibrary.db")
-        islem = baglanti.cursor()
-        baglanti.commit()
-
-        table = islem.execute(
-            "create table if not exists bookadd(bookName text,bookNo int,bookWriter text,bookHome text,bookTranstle text,bookPage int)")
-        baglanti.commit()
-
-        a = self.ui.lineEdit_3.text()
-        b = int(self.ui.lineEdit_4.text())
-        c = self.ui.lineEdit_5.text()
-        d = self.ui.lineEdit_6.text()
-        e = self.ui.lineEdit_7.text()
-        f = int(self.ui.lineEdit_8.text())
-
         try:
-            ekle = "insert into bookadd (bookName,bookNo,bookWriter,bookHome,bookTranstle,bookPage) values (?,?,?,?,?,?)"
-            islem.execute(ekle, (a, b, c, d, e, f))
+            baglanti = sqlite3.connect("DbLibrary.db")
+            islem = baglanti.cursor()
+            baglanti.commit()
+
+            table = islem.execute(
+                "create table if not exists bookadd(bookName text,bookNo int,bookWriter text,bookHome text,bookTranstle text,bookPage int,bookPart text)")
+            baglanti.commit()
+
+            a = self.ui.lineEdit_3.text()
+            b = int(self.ui.lineEdit_4.text())
+            c = self.ui.lineEdit_5.text()
+            d = self.ui.lineEdit_6.text()
+            e = self.ui.lineEdit_7.text()
+            f = int(self.ui.lineEdit_8.text())
+            g = self.ui.lineEdit_17.text()
+
+
+            ekle = "insert into bookadd (bookName,bookNo,bookWriter,bookHome,bookTranstle,bookPage,bookPart) values (?,?,?,?,?,?,?)"
+            islem.execute(ekle, (a, b, c, d, e, f,g))
             baglanti.commit()
 
             self.ui.lineEdit_3.clear()
@@ -200,30 +213,32 @@ class library_admin (QMainWindow) :
             self.ui.lineEdit_6.clear()
             self.ui.lineEdit_7.clear()
             self.ui.lineEdit_8.clear()
+            self.ui.lineEdit_17.clear()
 
         except:
             QMessageBox.warning(self, "Hata Mesajı", "Veri Kaydı Yapılamadı .")
 
     # Tamamlandı.
     def book_get_save(self):
-        baglanti = sqlite3.connect("DbLibrary.db")
-        islem = baglanti.cursor()
-        baglanti.commit()
-
-        islem.execute(
-            "create table if not exists bookget(bookName text,bookNo int,studentName text,studentSurname text,studentNo int,telNo int,dateNow text)")
-        baglanti.commit()
-
-        a = self.ui.lineEdit_9.text()
-        b = int(self.ui.lineEdit_10.text())
-        c = self.ui.lineEdit_11.text()
-        d = self.ui.lineEdit_12.text()
-        e = int(self.ui.lineEdit_13.text())
-        f = int(self.ui.lineEdit_14.text())
-        g=datetime.datetime.now()
-
-
         try:
+            baglanti = sqlite3.connect("DbLibrary.db")
+            islem = baglanti.cursor()
+            baglanti.commit()
+
+            islem.execute(
+                "create table if not exists bookget(bookName text,bookNo int,studentName text,studentSurname text,studentNo int,telNo int,dateNow text)")
+            baglanti.commit()
+
+            a = self.ui.lineEdit_9.text()
+            b = int(self.ui.lineEdit_10.text())
+            c = self.ui.lineEdit_11.text()
+            d = self.ui.lineEdit_12.text()
+            e = int(self.ui.lineEdit_13.text())
+            f = int(self.ui.lineEdit_14.text())
+            g=datetime.datetime.now()
+
+
+
             ekle= "insert into bookget (bookName,bookNo,studentName,studentSurname,studentNo,telNo,dateNow) values (?,?,?,?,?,?,?)"
             islem.execute(ekle,(a,b,c,d,e,f,g))
             baglanti.commit()
@@ -240,16 +255,20 @@ class library_admin (QMainWindow) :
 
     # Tamamlandı.
     def book_take_save(self):
-        db = sqlite3.connect("DbLibrary.db")
-        cursor = db.cursor()
-
-        silincek_veri=self.ui.lineEdit_15.text()
-        silincek_veri_1=self.ui.lineEdit_16.text()
-
-        command ="delete from bookget where bookName = ? or bookNo = ?"
         try:
+            db = sqlite3.connect("DbLibrary.db")
+            cursor = db.cursor()
+
+            silincek_veri=self.ui.lineEdit_15.text()
+            silincek_veri_1=self.ui.lineEdit_16.text()
+
+            command ="delete from bookget where bookName = ? or bookNo = ?"
+
             cursor.execute(command,(silincek_veri,silincek_veri_1))
             db.commit()
+
+            self.ui.lineEdit_15.clear()
+            self.ui.lineEdit_16.clear()
         except:
             QMessageBox.warning(self, "Hata Mesajı", "Lütfen Verileri Düzgün giriniz!!!!! .")
 
@@ -303,6 +322,7 @@ class library_admin (QMainWindow) :
             if usernew =="" or pwnew=="":
                 QMessageBox.critical(self, "Hata Mesajı", "Lütfen kullanıcı adını ve şifreyi giriniz!!!!!!")
             else:
+
                 cursor.execute("update login set username = ?,password = ? where id = ? ",(usernew,pwnew,id))
                 db.commit()
                 QMessageBox.critical(self, "Başarılı Değiştirme", "Şifreniz Değiştirilmiştir.")
@@ -312,8 +332,12 @@ class library_admin (QMainWindow) :
                 self.ui.lineEdit_25.clear()
                 self.ui.lineEdit_26.clear()
 
+
         except:
-            QMessageBox.critical(self, "Hata Mesajı", "Lütfen düzgün yazınız!!!!!!")
+            QMessageBox.critical(self, "Hata Mesajı", "Lütfen Tekrar Yazınız!!!!!!")
+
+            ekle = "insert into bookadd (username,password ) values (?,?)"
+            cursor.execute(ekle, (usernew, pwnew))
 
             self.ui.lineEdit_25.clear()
             self.ui.lineEdit_26.clear()
