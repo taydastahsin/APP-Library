@@ -1,0 +1,32 @@
+<RCC>
+  <qresource prefix="arka">
+    <file>d.jpg</file>
+  </qresource>
+  <qresource prefix="sil">
+    <file>delete.png</file>
+  </qresource>
+  <qresource prefix="degistir">
+    <file>c.jpg</file>
+  </qresource>
+  <qresource prefix="login">
+    <file>a.jpg</file>
+  </qresource>
+  <qresource prefix="home">
+    <file>home2.jpg</file>
+  </qresource>
+  <qresource prefix="giris">
+    <file>giris.png</file>
+  </qresource>
+  <qresource prefix="degistir">
+    <file>degistir.jpg</file>
+  </qresource>
+  <qresource prefix="bul">
+    <file>find.png</file>
+  </qresource>
+  <qresource prefix="kitap">
+    <file>Kitap.jpg</file>
+  </qresource>
+  <qresource prefix="kaydet">
+    <file>Kaydet.jpg</file>
+  </qresource>
+</RCC>

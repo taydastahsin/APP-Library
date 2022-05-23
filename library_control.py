@@ -40,6 +40,7 @@ class library_admin (QMainWindow) :
         self.ui.pushButton_12.clicked.connect(self.book_look_button)
         self.ui.pushButton_13.clicked.connect(self.book_find_button)
         self.ui.pushButton_14.clicked.connect(self.book_change_password_button)
+        self.ui.pushButton_15.clicked.connect(self.book_delete_button)
 
 
 
@@ -226,7 +227,7 @@ class library_admin (QMainWindow) :
             baglanti.commit()
 
             islem.execute(
-                "create table if not exists bookget(bookName text,bookNo int,studentName text,studentSurname text,studentNo int,telNo int,dateNow text)")
+                "create table if not exists bookget(bookName text,bookNo int,studentName text,studentSurname text,studentNo text,studentSchool text,telNo int,dateNow text)")
             baglanti.commit()
 
             a = self.ui.lineEdit_9.text()
@@ -235,12 +236,13 @@ class library_admin (QMainWindow) :
             d = self.ui.lineEdit_12.text()
             e = int(self.ui.lineEdit_13.text())
             f = int(self.ui.lineEdit_14.text())
-            g=datetime.datetime.now()
+            g= self.ui.comboBox.currentText()
+            h=datetime.datetime.now()
 
 
 
-            ekle= "insert into bookget (bookName,bookNo,studentName,studentSurname,studentNo,telNo,dateNow) values (?,?,?,?,?,?,?)"
-            islem.execute(ekle,(a,b,c,d,e,f,g))
+            ekle= "insert into bookget (bookName,bookNo,studentName,studentSurname,studentNo,studentSchool,telNo,dateNow) values (?,?,?,?,?,?,?,?)"
+            islem.execute(ekle,(a,b,c,d,e,g,f,h))
             baglanti.commit()
 
             self.ui.lineEdit_9.clear()
@@ -274,19 +276,24 @@ class library_admin (QMainWindow) :
 
     # Tamamlandı.
     def book_look_button(self):
-        db = sqlite3.connect("DbLibrary.db")
-        cursor = db.cursor()
+        try:
+            db = sqlite3.connect("DbLibrary.db")
+            cursor = db.cursor()
 
-        command =""" select * from bookget"""
+            find= str(self.ui.lineEdit_28.text())
 
-        result =cursor.execute(command)
+            command = "SELECT * FROM bookget WHERE studentNo LIKE '%s' LIMIT 100;" % ("%" + find + "%")
 
-        self.ui.tableWidget.setRowCount(0)
+            result =cursor.execute(command)
 
-        for row_number,row_data in enumerate(result):
-            self.ui.tableWidget.insertRow(row_number)
-            for column_number,data in enumerate(row_data):
-                self.ui.tableWidget.setItem(row_number,column_number,QTableWidgetItem(str(data)))
+            self.ui.tableWidget.setRowCount(0)
+
+            for row_number,row_data in enumerate(result):
+                self.ui.tableWidget.insertRow(row_number)
+                for column_number,data in enumerate(row_data):
+                    self.ui.tableWidget.setItem(row_number,column_number,QTableWidgetItem(str(data)))
+        except:
+            QMessageBox.warning(self, "Hata Mesajı", "Veri Bulma İşlemi Yapılamadı .")
 
     # Tamamlandı.
     def book_find_button(self):
@@ -309,6 +316,23 @@ class library_admin (QMainWindow) :
 
         except:
             QMessageBox.warning(self, "Hata Mesajı", "Veri Bulma İşlemi Yapılamadı .")
+
+    # Tamamlandı.
+    def book_delete_button(self):
+        try:
+            db = sqlite3.connect("DbLibrary.db")
+            cursor = db.cursor()
+
+            silincek_veri = self.ui.lineEdit_24.text()
+
+            command = "delete from bookadd where bookName = ? "
+
+            cursor.execute(command, (silincek_veri,))
+            db.commit()
+
+            self.ui.lineEdit_24.clear()
+        except:
+            QMessageBox.warning(self, "Hata Mesajı", "Lütfen Verileri Düzgün giriniz!!!!! .")
 
     # Tamamlandı.
     def book_change_password_button(self):
